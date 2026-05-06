@@ -256,29 +256,39 @@ export default function App() {
             <p className="text-gray-600">Zobacz nasze najnowsze słodkie produkcje w akcji!</p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
+          <div className="flex flex-wrap justify-center gap-8">
             {[
               "https://www.facebook.com/reel/23979016201751726",
               "https://www.facebook.com/reel/467309112720293",
-              "https://www.facebook.com/share/v/1Cc2TNsys8/"
             ].map((reelUrl, idx) => (
               <motion.div 
                 key={idx}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: idx * 0.2 }}
-                className="w-full max-w-[350px] aspect-[9/16] rounded-[2.5rem] overflow-hidden shadow-2xl border-4 border-ice-pink bg-black"
+                className="w-full max-w-[350px] space-y-4"
               >
-                <iframe 
-                  src={`https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(reelUrl)}&show_text=false&t=0`} 
-                  width="100%" 
-                  height="100%" 
-                  style={{ border: 'none', overflow: 'hidden' }} 
-                  scrolling="no" 
-                  frameBorder="0" 
-                  allowFullScreen={true} 
-                  allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-                />
+                <div className="aspect-[9/16] rounded-[2.5rem] overflow-hidden shadow-2xl border-4 border-ice-pink bg-black relative">
+                  <iframe 
+                    src={`https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(reelUrl)}&show_text=false&t=0&width=350`} 
+                    width="100%" 
+                    height="100%" 
+                    style={{ border: 'none', overflow: 'hidden' }} 
+                    scrolling="no" 
+                    frameBorder="0" 
+                    allowFullScreen={true} 
+                    allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+                  />
+                </div>
+                <a 
+                  href={reelUrl} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-2 text-sm font-bold text-ice-brown hover:text-pink-600 transition-colors py-2 bg-ice-pink/20 rounded-xl"
+                >
+                  <Facebook className="w-4 h-4" />
+                  Obejrzyj na Facebooku
+                </a>
               </motion.div>
             ))}
           </div>
